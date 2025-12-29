@@ -1,4 +1,4 @@
-# ALl CLASS PERFORMED QUESTIONS
+# ALL CLASS PERFORMED QUESTIONS
 **Student Name:** Ansh Tiwari  
 **Course:** B.Tech (IBM)  
 **Subject:** Web Development
