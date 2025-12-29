@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch JSON Data</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 12px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1558b0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: gray;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Fetch JSON Data Example</h1>
+<h3>B.Tech (IBM) – Web Technology Practical</h3>
+
+<div class="container">
+
+    <button onclick="fetchData()">Fetch Student Data</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr>
+                <td colspan="3">Click the button to load data</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<footer>
+    Designed & Developed by <b>Ansh (IBM)</b>
+</footer>
+
+<script>
+function fetchData() {
+
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => response.json())
+        .then(data => {
+
+            let table = "";
+            data.forEach(user => {
+                table += `
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("tableBody").innerHTML = table;
+        })
+        .catch(error => {
+            document.getElementById("tableBody").innerHTML =
+                "<tr><td colspan='3'>Error loading data</td></tr>";
+        });
+}
+</script>
+
+</body>
+</html>
